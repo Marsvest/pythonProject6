@@ -6,6 +6,7 @@ import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters.command import Command
 
+
 class ChatBot:
     prompt = '''Ты ассистент на веб сайте, в твои обязанности входит ответ на частозадаваемые вопросы (F.A.Q.)
                     Компания "Город Кранов"
@@ -42,15 +43,18 @@ class ChatBot:
         output = await loop.run_in_executor(None, self.pipe, prompt_with_msg, **self.generation_args)
         return output[0]['generated_text']
 
+
 logging.basicConfig(level=logging.INFO)
-bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
+bot_token = os.getenv("6953241738:AAEJYNhL18l55rl1P7rZwKZg0gPZ9xxuIpw")
 bot = Bot(token=bot_token)
 dp = Dispatcher()
 chatbot = ChatBot()
 
+
 @dp.message(Command("start"))
 async def send_welcome(message: types.Message):
     await message.reply("Привет! Я бот компании 'Город Кранов'. Задайте мне свой вопрос.")
+
 
 @dp.message()
 async def echo(message: types.Message):
@@ -64,8 +68,10 @@ async def echo(message: types.Message):
         logging.error(f"Error generating response: {e}")
         await message.reply("Извините, произошла ошибка при обработке вашего запроса.")
 
+
 async def main():
     await dp.start_polling(bot)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
