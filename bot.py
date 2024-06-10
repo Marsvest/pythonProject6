@@ -45,8 +45,7 @@ class ChatBot:
 
 
 logging.basicConfig(level=logging.INFO)
-bot_token = os.getenv("6953241738:AAEJYNhL18l55rl1P7rZwKZg0gPZ9xxuIpw")
-bot = Bot(token=bot_token)
+bot = Bot(token="6953241738:AAEJYNhL18l55rl1P7rZwKZg0gPZ9xxuIpw")
 dp = Dispatcher()
 chatbot = ChatBot()
 
